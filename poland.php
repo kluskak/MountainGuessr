@@ -38,49 +38,58 @@ $conn->close();
 </head>
 <body>
     <h2>Zgadnij lokalizację góry!</h2>
-    <img src="img/<?php echo $zdjecie; ?>" alt="Zdjęcie góry">
-    
     <form action="sprawdz.php" method="post" id="locationForm">
-        <input type="hidden" name="id" value="<?php echo $id; ?>">
-        <input type="hidden" name="lat" id="lat" value="">
-        <input type="hidden" name="lng" id="lng" value="">
-        <button type="submit">Sprawdź lokalizację</button>
-    </form>
-
-    <div id="map"></div>
-
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script>
-        let map;
-        let marker;
-        let defaultPosition = [51.5, 19.0];
-
-        function initMap() {
-            map = L.map('map').setView(defaultPosition, 5);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-
-            marker = L.marker(defaultPosition, { draggable: true }).addTo(map);
-
-            marker.on('dragend', function(e) {
-                let latLng = marker.getLatLng();
-                document.getElementById('lat').value = latLng.lat;
-                document.getElementById('lng').value = latLng.lng;
-            });
-
-            map.on('click', function(e) {
-                let lat = e.latlng.lat;
-                let lng = e.latlng.lng;
-
-                marker.setLatLng([lat, lng]);
-                document.getElementById('lat').value = lat;
-                document.getElementById('lng').value = lng;
-            });
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <input type="hidden" name="lat" id="lat" value="">
+            <input type="hidden" name="lng" id="lng" value="">
+            <button type="submit">Sprawdź lokalizację</button>
+        </form>
+    <main>
+        <style>
+        main {
+            background: url('img/<?php echo $zdjecie; ?>') center/cover no-repeat;
         }
+        </style>
+        
 
-        window.onload = initMap;
-    </script>
+        <div id="map"></div>
+
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script>
+            let map;
+            let marker;
+            let defaultPosition = [51.5, 19.0];
+
+            function initMap() {
+                map = L.map('map').setView(defaultPosition, 5);
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                marker = L.marker(defaultPosition, { draggable: true }).addTo(map);
+
+                marker.on('dragend', function(e) {
+                    let latLng = marker.getLatLng();
+                    document.getElementById('lat').value = latLng.lat;
+                    document.getElementById('lng').value = latLng.lng;
+                });
+
+                map.on('click', function(e) {
+                    let lat = e.latlng.lat;
+                    let lng = e.latlng.lng;
+
+                    marker.setLatLng([lat, lng]);
+                    document.getElementById('lat').value = lat;
+                    document.getElementById('lng').value = lng;
+                });
+            }
+
+            window.onload = initMap;
+        </script>
+    </main>
+    <footer>
+        <p>MountainGuessr &copy; 2025</p>
+    </footer>
 </body>
 </html>
