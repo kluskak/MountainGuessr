@@ -11,51 +11,15 @@ body {
     align-items: center;
     color: white;
 }
-img {
-    max-width: 80%;
-    height: auto;
-    border-radius: 10px;
-}
-
-main{
-    min-height: 100vh;
-    width: 75%;
-    position: relative;
-    z-index: 1;
-    color: white;
-    padding: 20px;
-    margin-top: 25px;
-    display: flex;
-    justify-content: right;
-    align-items: flex-end;
-    border-radius: 25px;
-    transition: background 0.3s ease-in-out;
-}
-
-.controls{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-
-.controls button{
-    font-size: 25px;
-    padding: 10px 20px;
-}
-
-#map{
-    height: 250px;
-    width: 25%;
-    margin: 5px;
-    border-radius: 10px;
-    position: absolute;
-    transition: all 0.5s;
-}
-#map:hover {
-    height: 400px;
-    width: 50%;
+#map {
+    height: 500px;
+    width: 80%;
     margin-top: 20px;
     border-radius: 10px;
+}
+p {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 button {
@@ -77,8 +41,8 @@ button {
 button:hover {
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(22, 114, 133, 0.4); /* Turkusowy z gradientu */
-    border-color: #c2e2e9; /* Ciemniejszy turkus */
+    box-shadow: 0 5px 15px rgba(22, 114, 133, 0.4);
+    border-color: #c2e2e9;
 }
 
 button::before {

@@ -13,7 +13,7 @@ $id = $_POST['id'];
 $userLat = $_POST['lat'];
 $userLng = $_POST['lng'];
 
-$sql = "SELECT * FROM gory WHERE id = $id";
+$sql = "SELECT * FROM gory_zagraniczne WHERE id = $id";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -48,7 +48,7 @@ $distance = round(haversine($szerokosc, $dlugosc, $userLat, $userLng), 2);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wynik lokalizacji</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="css/sprawdz.css">
+    <link rel="stylesheet" href="css/sprawdzWorld.css">
 </head>
 <body>
     <h2>Oto wynik!</h2>
@@ -77,7 +77,7 @@ $distance = round(haversine($szerokosc, $dlugosc, $userLat, $userLng), 2);
         ];
         L.polyline(latlngs, { color: 'red' }).addTo(map);
     </script>
-    <form action="poland.php" method="post">
+    <form action="world.php" method="post">
         <button type="submit">Zagraj ponownie</button>
     <footer>
         <p>MountainGuessr &copy; 2025</p>

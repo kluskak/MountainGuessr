@@ -9,7 +9,7 @@ if ($conn->connect_error) {
     die("Błąd połączenia: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM gory ORDER BY RAND() LIMIT 1";
+$sql = "SELECT * FROM gory_zagraniczne ORDER BY RAND() LIMIT 1";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -34,7 +34,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zgadnij lokalizację góry</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="css/poland.css">
+    <link rel="stylesheet" href="css/world.css">
     <style>
         main {
             background: url('img/<?php echo $zdjecie1; ?>') center/cover no-repeat;
@@ -44,7 +44,7 @@ $conn->close();
 </head>
 <body>
     <h2>Zgadnij lokalizację góry!</h2>
-    <form action="sprawdz.php" method="post" id="locationForm">
+    <form action="sprawdzWorld.php" method="post" id="locationForm">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
         <input type="hidden" name="lat" id="lat" value="">
         <input type="hidden" name="lng" id="lng" value="">
